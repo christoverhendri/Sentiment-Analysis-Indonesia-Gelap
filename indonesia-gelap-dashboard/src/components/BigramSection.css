@@ -1,0 +1,129 @@
+.bigram-section {
+  padding: 120px 0;
+  background: var(--bg);
+  position: relative;
+}
+
+.bigram-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.bigram-layout.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bigram-card { overflow: visible; }
+
+.bigram-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bigram-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  cursor: default;
+  transition: background 0.2s;
+  border-radius: 0;
+}
+
+.bigram-row.hovered .bigram-text { color: var(--white); }
+.bigram-row.hovered .bigram-count { color: var(--red); }
+
+.bigram-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+
+.bigram-bar-wrap {
+  height: 6px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.bigram-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red-dim), var(--red));
+  width: 0%;
+  transition: width 1s ease;
+}
+
+.bigram-row.hovered .bigram-bar-fill {
+  background: linear-gradient(90deg, var(--red), #ff6b7a);
+  box-shadow: 0 0 8px var(--red-glow);
+}
+
+.bigram-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: right;
+  transition: color 0.2s;
+}
+
+/* Word Cloud */
+.wordcloud-card {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wordcloud-container {
+  flex: 1;
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, rgba(230,57,70,0.03) 0%, transparent 70%);
+}
+
+.wc-word {
+  position: absolute;
+  cursor: default;
+  user-select: none;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 20px currentColor;
+  opacity: 0.85;
+}
+
+.wc-word:hover {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.15) !important;
+  z-index: 10;
+  text-shadow: 0 0 30px currentColor;
+}
+
+.wc-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--surface2);
+  border-left: 2px solid var(--red-dim);
+}
+
+.wc-note strong { color: var(--amber); }
+
+@media (max-width: 900px) {
+  .bigram-layout { grid-template-columns: 1fr; }
+  .wordcloud-card { min-height: 400px; }
+}

@@ -1,0 +1,140 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(16px);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-ig {
+  width: 36px;
+  height: 36px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--white);
+  letter-spacing: 0.1em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--red);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover { color: var(--white); }
+.nav-link:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--red);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid var(--red-dim);
+  transition: all 0.3s;
+}
+
+.nav-cta:hover {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--bg2);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .nav-links.open { display: flex; }
+}
